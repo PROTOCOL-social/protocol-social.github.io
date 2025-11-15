@@ -1,0 +1,14 @@
+<svg width="400" height="800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="800" rx="40" fill="#f5f5f5"/>
+  <rect x="20" y="60" width="360" height="680" rx="20" fill="white"/>
+  <rect x="40" y="80" width="320" height="40" rx="8" fill="#007AFF" opacity="0.1"/>
+  <text x="200" y="110" font-family="system-ui" font-size="16" fill="#007AFF" text-anchor="middle">PROTOCOL App Preview</text>
+  <rect x="40" y="140" width="320" height="200" rx="12" fill="#e0e0e0"/>
+  <text x="200" y="250" font-family="system-ui" font-size="14" fill="#666" text-anchor="middle">Swipe Interface</text>
+  <circle cx="200" cy="400" r="60" fill="#007AFF" opacity="0.2"/>
+  <text x="200" y="410" font-family="system-ui" font-size="40" fill="#007AFF" text-anchor="middle">★</text>
+  <rect x="40" y="500" width="320" height="60" rx="30" fill="#34C759"/>
+  <text x="200" y="540" font-family="system-ui" font-size="18" fill="white" text-anchor="middle" font-weight="600">INTERESTED</text>
+  <rect x="40" y="580" width="320" height="60" rx="30" fill="#FF3B30"/>
+  <text x="200" y="620" font-family="system-ui" font-size="18" fill="white" text-anchor="middle" font-weight="600">PASS</text>
+</svg>
