@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PROTOCOL - Opening Event...</title>
+  <meta property="og:title" content="Check out this event on PROTOCOL">
+  <meta property="og:description" content="Tap to view this event in the PROTOCOL app">
+  <meta property="og:image" content="https://protocol-social.github.io/assets/logo.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .container { max-width: 400px; }
+    h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 2rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .buttons { display: none; }
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      margin: 8px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+    .btn:hover { transform: scale(1.05); }
+    .btn-primary { background: white; color: #667eea; }
+    .btn-secondary { background: rgba(255,255,255,0.2); color: white; border: 2px solid white; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PROTOCOL</h1>
+    <div class="spinner" id="spinner"></div>
+    <p id="status">Opening event in app...</p>
+    <div class="buttons" id="fallback">
+      <a class="btn btn-primary" id="app-link">Open in App</a>
+      <a class="btn btn-secondary" id="landing-link" href="https://protocol-social.github.io">Learn More</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var fallbackUrl = 'https://protocol-social.github.io';
+
+      // Parse event ID from URL: /event/abc123 -> abc123
+      var pathParts = window.location.pathname.split('/').filter(Boolean);
+      var eventIndex = pathParts.indexOf('event');
+      var eventId = (eventIndex !== -1 && pathParts[eventIndex + 1])
+        ? pathParts[eventIndex + 1]
+        : null;
+
+      // If no valid event ID, redirect to landing page
+      if (!eventId) {
+        window.location.href = fallbackUrl;
+        return;
+      }
+
+      var appUrl = 'com.protocol.social://event/' + eventId;
+
+      // Set up links
+      document.getElementById('app-link').href = appUrl;
+
+      // Try to open app
+      window.location.href = appUrl;
+
+      // Show fallback buttons after 2 seconds
+      setTimeout(function() {
+        document.getElementById('spinner').style.display = 'none';
+        document.getElementById('status').textContent = "App didn't open?";
+        document.getElementById('fallback').style.display = 'block';
+      }, 2000);
+
+      // Auto-redirect to landing page after 5 seconds if still visible
+      setTimeout(function() {
+        if (!document.hidden) {
+          window.location.href = fallbackUrl;
+        }
+      }, 5000);
+    })();
+  </script>
+</body>
+</html>
