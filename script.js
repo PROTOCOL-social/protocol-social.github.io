@@ -3,6 +3,47 @@
  * Handles smooth scrolling, animations, and interactions
  */
 
+// Deep Link Handler - Check if this is an event/chat link
+(function() {
+    const path = window.location.pathname;
+    const eventMatch = path.match(/^\/event\/([^\/]+)/);
+    const chatMatch = path.match(/^\/chat\/([^\/]+)/);
+
+    if (eventMatch || chatMatch) {
+        const type = eventMatch ? 'event' : 'chat';
+        const id = eventMatch ? eventMatch[1] : chatMatch[1];
+
+        // Try to open the app via custom scheme
+        window.location.href = `com.protocol.social://${type}/${id}`;
+
+        // After delay, if still on page, show download prompt
+        setTimeout(() => {
+            document.body.innerHTML = `
+                <div class="deep-link-fallback">
+                    <div class="deep-link-content">
+                        <div class="deep-link-logo">
+                            <img src="/assets/logo.png" alt="PROTOCOL" width="64" height="64">
+                        </div>
+                        <h1>View this ${type === 'event' ? 'event' : 'chat'} in PROTOCOL</h1>
+                        <p>Download the app to see full details and join the conversation.</p>
+                        <div class="deep-link-buttons">
+                            <a href="#" class="btn-primary btn-large" onclick="window.location.href='com.protocol.social://${type}/${id}'; return false;">
+                                Open in App
+                            </a>
+                            <a href="https://apps.apple.com/app/protocol" class="btn-secondary btn-large">
+                                Download on iOS
+                            </a>
+                        </div>
+                        <p class="deep-link-note">Don't have the app? Download it to discover local events.</p>
+                    </div>
+                </div>
+            `;
+        }, 1500);
+
+        return; // Don't run rest of script for deep links
+    }
+})();
+
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
