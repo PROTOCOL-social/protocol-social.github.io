@@ -873,42 +873,79 @@ section {
     animation: fadeInUp 0.6s ease-out;
 }
 
+/* Deep Link Loading Page */
+.deep-link-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #007AFF;
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.deep-link-loading h1 {
+    color: var(--color-white);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: 0.05em;
+}
+
+.deep-link-loading p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.125rem;
+    margin-top: var(--spacing-lg);
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--color-white);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 /* Deep Link Fallback Page */
 .deep-link-fallback {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-color: #007AFF;
     padding: var(--spacing-lg);
 }
 
 .deep-link-content {
     text-align: center;
     max-width: 400px;
-    background: var(--color-white);
     padding: var(--spacing-2xl);
-    border-radius: var(--radius-2xl);
-    box-shadow: var(--shadow-xl);
-}
-
-.deep-link-logo {
-    margin-bottom: var(--spacing-lg);
-}
-
-.deep-link-logo img {
-    border-radius: var(--radius-lg);
 }
 
 .deep-link-fallback h1 {
-    font-size: 1.5rem;
+    color: var(--color-white);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 0.05em;
+}
+
+.deep-link-fallback h2 {
+    color: var(--color-white);
+    font-size: 1.25rem;
+    font-weight: 600;
     margin-bottom: var(--spacing-md);
-    color: var(--color-black);
 }
 
 .deep-link-fallback p {
-    color: var(--color-gray-600);
-    margin-bottom: var(--spacing-lg);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-xl);
     line-height: 1.6;
 }
 
@@ -916,11 +953,28 @@ section {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
 }
 
-.deep-link-note {
-    font-size: 0.875rem;
-    color: var(--color-gray-500);
-    margin-bottom: 0;
+.deep-link-fallback .btn-primary,
+.deep-link-fallback .btn-primary:link,
+.deep-link-fallback .btn-primary:visited {
+    background-color: var(--color-white);
+    color: #007AFF;
+}
+
+.deep-link-fallback .btn-primary:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.deep-link-fallback .btn-secondary,
+.deep-link-fallback .btn-secondary:link,
+.deep-link-fallback .btn-secondary:visited {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.deep-link-fallback .btn-secondary:hover {
+    background-color: var(--color-white);
+    color: #007AFF;
 }

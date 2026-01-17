@@ -13,6 +13,15 @@
         const type = eventMatch ? 'event' : 'chat';
         const id = eventMatch ? eventMatch[1] : chatMatch[1];
 
+        // Show loading state immediately
+        document.body.innerHTML = `
+            <div class="deep-link-loading">
+                <h1>PROTOCOL</h1>
+                <div class="spinner"></div>
+                <p>Opening ${type} in app...</p>
+            </div>
+        `;
+
         // Try to open the app via custom scheme
         window.location.href = `com.protocol.social://${type}/${id}`;
 
@@ -21,11 +30,9 @@
             document.body.innerHTML = `
                 <div class="deep-link-fallback">
                     <div class="deep-link-content">
-                        <div class="deep-link-logo">
-                            <img src="/assets/logo.png" alt="PROTOCOL" width="64" height="64">
-                        </div>
-                        <h1>View this ${type === 'event' ? 'event' : 'chat'} in PROTOCOL</h1>
-                        <p>Download the app to see full details and join the conversation.</p>
+                        <h1>PROTOCOL</h1>
+                        <h2>View this ${type} in the app</h2>
+                        <p>Download PROTOCOL to see full details and join the conversation.</p>
                         <div class="deep-link-buttons">
                             <a href="#" class="btn-primary btn-large" onclick="window.location.href='com.protocol.social://${type}/${id}'; return false;">
                                 Open in App
@@ -34,11 +41,10 @@
                                 Download on iOS
                             </a>
                         </div>
-                        <p class="deep-link-note">Don't have the app? Download it to discover local events.</p>
                     </div>
                 </div>
             `;
-        }, 1500);
+        }, 2000);
 
         return; // Don't run rest of script for deep links
     }
