@@ -1,0 +1,5 @@
+include:
+  - .well-known
+
+title: PROTOCOL
+url: "https://protocol-social.github.io"

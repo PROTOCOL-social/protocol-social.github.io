@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "2GMV7MM9C5.com.protocol.social"
+        ],
+        "components": [
+          { "/": "/event/*" },
+          { "/": "/chat/*" }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["2GMV7MM9C5.com.protocol.social"]
+  }
+}
