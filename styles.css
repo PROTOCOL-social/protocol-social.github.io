@@ -880,8 +880,8 @@ section {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #007AFF;
-    padding: var(--spacing-lg);
+    background: #007AFF !important;
+    padding: 24px;
     text-align: center;
 }
 
@@ -918,8 +918,8 @@ section {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #007AFF;
-    padding: var(--spacing-lg);
+    background: #007AFF !important;
+    padding: 24px;
 }
 
 .deep-link-content {
