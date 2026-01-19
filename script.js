@@ -173,13 +173,13 @@ function toggleMobileMenu() {
     console.log('Mobile menu toggle');
 }
 
-// Parallax effect for hero section
+// Parallax effect for hero section (gentler to prevent covering text)
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const heroImage = document.querySelector('.hero-image');
 
     if (heroImage && scrolled < 800) {
-        heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+        heroImage.style.transform = `translateY(${scrolled * 0.1}px)`;
     }
 });
 

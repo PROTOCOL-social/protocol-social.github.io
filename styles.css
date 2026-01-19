@@ -305,12 +305,21 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .mockup-img {
     max-width: 100%;
-    height: auto;
+    max-height: 500px;
+    width: auto;
+    object-fit: contain;
     filter: drop-shadow(var(--shadow-xl));
+}
+
+@media (max-width: 768px) {
+    .mockup-img {
+        max-height: 350px;
+    }
 }
 
 /* Section Styles */
