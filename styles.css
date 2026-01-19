@@ -880,7 +880,7 @@ section {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #007AFF !important;
+    background: var(--color-primary-dark);
     padding: 24px;
     text-align: center;
 }
@@ -918,7 +918,7 @@ section {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #007AFF !important;
+    background: var(--color-primary-dark);
     padding: 24px;
 }
 
